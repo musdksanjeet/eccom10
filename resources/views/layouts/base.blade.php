@@ -22,7 +22,7 @@
     <meta name="author" content="Surfside Media">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <title>SurfsideMedia</title>
+    <title>Recenturesoft Infotech pvt. ltd.</title>
 
     <link id="rtl-link" rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendors/ion.rangeSlider.min.css')}}">
@@ -115,7 +115,7 @@
                         <div class="main-menu">
                             <div class="menu-left">
                                 <div class="brand-logo">
-                                    <a href="index.htm">
+                                    <a href="/">
                                         <img src="{{asset('assets/images/logo.png')}}" class="h-logo img-fluid blur-up lazyload"
                                             alt="logo">
                                     </a>
@@ -136,7 +136,7 @@
                                                     </span>
                                                 </div>
                                             </li>
-                                            <li><a href="index.htm" class="nav-link menu-title">Home</a></li>
+                                            <li><a href="/" class="nav-link menu-title">Home</a></li>
                                             <li><a href="shop.html" class="nav-link menu-title">Shop</a></li>
                                             <li><a href="cart/list.html" class="nav-link menu-title">Cart</a></li>
                                             <li><a href="about-us.html" class="nav-link menu-title">About Us</a></li>
@@ -176,17 +176,36 @@
                                     </li>
                                     <li class="onhover-dropdown">
                                         <div class="cart-media name-usr">
-                                            <i data-feather="user"></i>
+                                          @auth <span>{{ Auth::user()->name }}</span> @endauth <i data-feather="user"></i>
                                         </div>
                                         <div class="onhover-div profile-dropdown">
                                             <ul>
-                                                <li>
-                                                    <a href="login.html" class="d-block">Login</a>
-                                                </li>
-                                                <li>
-                                                    <a href="register.html" class="d-block">Register</a>
-                                                </li>
-
+                                                @if(Route::has('login'))
+                                                @auth
+                                                    @if(Auth::user()->utype === 'ADM')
+                                                        <li>
+                                                            <a href="{{route('admin.index')}}" class="d-block">Dashboard</a>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{route('user.index')}}" class="d-block">My Account</a>
+                                                        </li>
+                                                    @endif
+                                                    <li>
+                                                        <a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('frmlogout').submit();" class="d-block">Logout</a>
+                                                        <form id="frmlogout" action="{{route('logout')}}" method="POST">
+                                                            @csrf
+                                                        </form>
+                                                    </li>
+                                                @else
+                                                    <li>
+                                                        <a href="{{route('login')}}" class="d-block">Login</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{route('register')}}" class="d-block">Register</a>
+                                                    </li>
+                                                @endauth                                                    
+                                            @endif
                                             </ul>
                                         </div>
                                     </li>
@@ -257,7 +276,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="footer-contact">
                             <div class="brand-logo">
-                                <a href="index.htm" class="footer-logo float-start">
+                                <a href="/" class="footer-logo float-start">
                                     <img src="{{asset('assets/images/logo.png')}}" class="f-logo img-fluid blur-up lazyload"
                                         alt="logo">
                                 </a>
@@ -284,7 +303,7 @@
                             <div class="footer-content">
                                 <ul>
                                     <li>
-                                        <a href="index.htm" class="font-dark">Home</a>
+                                        <a href="/" class="font-dark">Home</a>
                                     </li>
                                     <li>
                                         <a href="shop.html" class="font-dark">Shop</a>

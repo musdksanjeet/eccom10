@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\admin\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +28,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//for User
+Route::middleware('auth')->group(function(){
+Route::get('/my-account',[UserController::class,'index'])->name('user.index');
+});
+
+//for Admin
+Route::middleware('auth','auth.admin')->group(function(){
+Route::get('/admin',[AdminController::class,'index'])->name('admin.index');
+});

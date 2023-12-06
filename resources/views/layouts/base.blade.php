@@ -137,7 +137,7 @@
                                                 </div>
                                             </li>
                                             <li><a href="/" class="nav-link menu-title">Home</a></li>
-                                            <li><a href="shop.html" class="nav-link menu-title">Shop</a></li>
+                                            <li><a href="{{route('shop.index')}}" class="nav-link menu-title">Shop</a></li>
                                             <li><a href="cart/list.html" class="nav-link menu-title">Cart</a></li>
                                             <li><a href="about-us.html" class="nav-link menu-title">About Us</a></li>
                                             <li><a href="contact-us.html" class="nav-link menu-title">Contact Us</a>
@@ -306,7 +306,7 @@
                                         <a href="/" class="font-dark">Home</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html" class="font-dark">Shop</a>
+                                        <a href="{{route('shop.index')}}" class="font-dark">Shop</a>
                                     </li>
                                     <li>
                                         <a href="about-us.html" class="font-dark">About Us</a>
@@ -329,19 +329,19 @@
                             <div class="footer-content">
                                 <ul>
                                     <li>
-                                        <a href="shop.html" class="font-dark">Latest Shoes</a>
+                                        <a href="{{route('shop.index')}}" class="font-dark">Latest Shoes</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html" class="font-dark">Branded Jeans</a>
+                                        <a href="{{route('shop.index')}}" class="font-dark">Branded Jeans</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html" class="font-dark">New Jackets</a>
+                                        <a href="{{route('shop.index')}}" class="font-dark">New Jackets</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html" class="font-dark">Colorfull Hoodies</a>
+                                        <a href="{{route('shop.index')}}" class="font-dark">Colorfull Hoodies</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html" class="font-dark">Shiner Goggles</a>
+                                        <a href="{{route('shop.index')}}" class="font-dark">Shiner Goggles</a>
                                     </li>
                                 </ul>
                             </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\admin\AdminController;
-
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,7 @@ use App\Http\Controllers\admin\AdminController;
 // });
 
 Route::get('/',[AppController::class,'index'])->name('app.index');
+Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 
 Auth::routes();
 

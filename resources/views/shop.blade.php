@@ -525,7 +525,7 @@
                         </div>
                         @endforeach
                     </div>
-                    {{$products->links()}}
+                    {{$products->links("pagination.default")}}
                     
     </section>
     <!-- Shop Section end -->

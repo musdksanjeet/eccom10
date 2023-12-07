@@ -86,7 +86,7 @@
                             <td>
                                 <div class="qty-box">
                                     <div class="input-group">
-                                        <input type="number" name="quantity" data-rowid="{{$item->rowId}}" class="form-control input-number" value="{{$item->qty}}">
+                                        <input type="number" name="quantity" data-rowid="{{$item->rowId}}" onchange="updateQuantity(this)" class="form-control input-number" value="{{$item->qty}}">
                                     </div>
                                 </div>
                             </td>
@@ -107,7 +107,7 @@
                 <div class="row">
                     <div class="col-sm-7 col-5 order-1">
                         <div class="left-side-button text-end d-flex d-block justify-content-end">
-                            <a href="javascript:void(0)" class="text-decoration-underline theme-color d-block text-capitalize">clear
+                            <a href="javascript:void(0)" onclick="clearCart();" class="text-decoration-underline theme-color d-block text-capitalize">clear
                                 all items</a>
                         </div>
                     </div>
@@ -173,4 +173,43 @@
         @endif
     </div>
 </section>
+<form id="updateCartQty" action="{{route('cart.update')}}" method="POST">
+@csrf
+@method('put')
+<input type="hidden" name="rowId" id="rowId">
+<input type="hidden" name="quantity" id="quantity">	
+</form>
+
+<form id="deleteFromCart" method="POST" action="{{route('cart.remove')}}">
+	@csrf
+	@method('delete')
+	<input type="hidden" name="rowId" id="rowId_D">
+</form>
+
+<form method="POST" action="{{route('cart.clear')}}" id="clearCart">
+	@csrf
+	@method('delete')
+</form>
+
+@push('scripts')
+<script type="text/javascript">
+	function updateQuantity(qty)
+	{
+		$('#rowId').val($(qty).data('rowId'));
+		$('#quantity').val(#(updateQuantityty).val());
+		$('#updateCartQty').submit();
+	}
+
+	function removeItemFromCart(rowId)
+	{
+		$('#rowId_D').val(rowId);
+		$('#deleteFromCart').submit();
+	}
+
+	function clearCart()
+	{
+		$('#clearCart').submit();
+	}
+</script>
+@endpush
 @endsection
